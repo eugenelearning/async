@@ -3,8 +3,8 @@ package org.example.threadpool;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Logger;
 
 public class CustomThreadPool implements CustomExecutor {
@@ -55,7 +55,7 @@ public class CustomThreadPool implements CustomExecutor {
 
     private synchronized void addWorker() {
         if (workers.size() >= maxPoolSize) {
-            return ;
+            return;
         }
 
         BlockingQueue<Runnable> queue = new ArrayBlockingQueue<>(queueSize);
@@ -63,14 +63,14 @@ public class CustomThreadPool implements CustomExecutor {
         queues.add(queue);
 
         CustomWorker worker = new CustomWorker(
-            queue,
-            this.threadFactory,
-            workers,
-            logger,
-            this.corePoolSize,
-            this.activeThreads,
-            this.keepAliveTime,
-            this.timeUnit
+                queue,
+                this.threadFactory,
+                workers,
+                logger,
+                this.corePoolSize,
+                this.activeThreads,
+                this.keepAliveTime,
+                this.timeUnit
         );
 
         workers.add(worker);

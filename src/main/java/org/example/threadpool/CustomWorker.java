@@ -7,12 +7,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Logger;
 
 public class CustomWorker implements Runnable {
+    final Thread thread;
     private final Logger logger;
     private final BlockingQueue<Runnable> queue;
     private final int corePoolSize;
     private final long keepAliveTime;
     private final TimeUnit timeUnit;
-    final Thread thread;
     private final AtomicInteger activeThreads;
     private final List workers;
     private volatile boolean running = true;
